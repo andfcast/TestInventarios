@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<IInventarioService, InventarioService>();
+builder.Services.AddScoped<IInventarioService, InventarioService>();
 
 var app = builder.Build();
 

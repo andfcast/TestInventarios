@@ -11,12 +11,12 @@
     <h1>Manejo de inventarios</h1>
     <br />
     <br />
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Agregar nuevo artículo</h3>
-                <br />
-                <form id="formInventario">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card col-md-12">
+                <div class="card-body">
+                    <h3 class="card-title">Agregar nuevo artículo</h3>
+                    <br />
                     <div class="form-group">
                         <label for="txtNombre">Nombre del producto</label>
                         <input class="form-control" id="txtNombre" placeholder="Ingrese el nombre del artículo">
@@ -41,30 +41,28 @@
                     </div>
                     <br />
                     <button class="btn btn-primary" onclick="agregar()">Insertar</button>
-                </form>                
+                </div>
             </div>
-        </div>        
-    </div>
-    <br />
-    <br />
-    <div class="card col-md-6">
-        <div class="card-body">
-            <h3 class="card-title">Lista de artículos en inventario</h3>
-        </div>        
-        <br />
-        <ul class="list-group" id="listaInventario"></ul>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-5">
+            <div class="card-body">
+                <h3 class="card-title">Lista de artículos en inventario</h3>
+            </div>
+            <br />
+            <ul class="list-group" id="listaInventario"></ul>
+        </div>
     </div>    
+    <script src="scripts/inventario.js"></script>
     <script>
         async function cargar() {
             const res = await fetch('/api/inventario');
             const datos = await res.json();
             document.getElementById('listaInventario').innerHTML = datos.map(a => `<li class="list-group-item list-group-item-info">${a.nombre}: ${a.categoria} - $${a.precio}. Actualmente hay ${a.cantidad}</li>`).join('');
         }
-        async function limpiar() {
-            const formulario = document.getElementById('formInventario');
-            formulario.reset();
-            document.getElementById('txtNombre').focus();
-        }
+
         async function agregar() {
             const nombre = document.getElementById('txtNombre').value;
             const precio = document.getElementById('txtPrecio').value;
@@ -75,8 +73,8 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ nombre, precio, idCategoria, cantidad })
             });
-            cargar();
             limpiar();
+            cargar();
         }
         cargar();
     </script>

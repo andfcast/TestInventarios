@@ -1,6 +1,6 @@
 ﻿using InventariosWebApp.Models;
 
-namespace InventariosWebApp.Patterns
+namespace InventariosWebApp.Patterns.Creational
 {
     /// <summary>
     /// Implementación del patrón Builder para construir objetos ArticuloDto complejos de manera fluida y flexible.

@@ -1,5 +1,5 @@
 ﻿using InventariosWebApp.Models;
-using InventariosWebApp.Patterns;
+using InventariosWebApp.Patterns.Creational;
 using InventariosWebApp.Service.Interface;
 
 namespace InventariosWebApp.Service.Implementacion
@@ -28,7 +28,7 @@ namespace InventariosWebApp.Service.Implementacion
                 .SetCantidad(dto.Cantidad)
                 .Build();
 
-            InventarioStorage.Instance.lstArticulos.Add(objArticulo);
+            InventarioStorage.Instance.AgregarArticulo(objArticulo);
         }
 
         /// <summary>

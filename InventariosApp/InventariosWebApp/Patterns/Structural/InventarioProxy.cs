@@ -2,7 +2,7 @@
 using InventariosWebApp.Service.Implementacion;
 using InventariosWebApp.Service.Interface;
 
-namespace InventariosWebApp.Patterns
+namespace InventariosWebApp.Patterns.Structural
 {
     /// <summary>
     /// Proporciona una implementación de proxy para el servicio de inventario, permitiendo la gestión de artículos a

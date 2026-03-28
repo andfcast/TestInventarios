@@ -1,3 +1,6 @@
+using InventariosWebApp.Service.Implementacion;
+using InventariosWebApp.Service.Interface;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<IInventarioService, InventarioService>();
 
 var app = builder.Build();
 

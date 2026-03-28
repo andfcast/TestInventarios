@@ -16,30 +16,32 @@
             <div class="card-body">
                 <h3 class="card-title">Agregar nuevo artículo</h3>
                 <br />
-                <div class="form-group">
-                    <label for="txtNombre">Nombre del producto</label>
-                    <input class="form-control" id="txtNombre" placeholder="Ingrese el nombre del artículo">
-                </div>
-                <div class="form-group">
-                    <label for="txtPrecio">Precio</label>
-                    <input class="form-control" id="txtPrecio" type="number" placeholder="Ingrese el precio de venta">
-                </div>
-                <div class="form-group">
-                    <label for="cmbCategoria">Categoría</label>
-                    <select class="form-control" id="cmbCategoria">
-                        <option value="0">Selecciona una categoría</option>
-                        <option value="1">Tecnología</option>
-                        <option value="2">Hogar</option>
-                        <option value="3">Alimentos</option>
-                        <option value="4">Hogar</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="txtCantidad">Cantidad</label>
-                    <input class="form-control" id="txtCantidad" type="number" placeholder="Ingrese la cantidad de artículos en inventario">
-                </div>
-                <br />
-                <button class="btn btn-primary" onclick="agregar()">Insertar</button>
+                <form id="formInventario">
+                    <div class="form-group">
+                        <label for="txtNombre">Nombre del producto</label>
+                        <input class="form-control" id="txtNombre" placeholder="Ingrese el nombre del artículo">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPrecio">Precio</label>
+                        <input class="form-control" id="txtPrecio" type="number" placeholder="Ingrese el precio de venta">
+                    </div>
+                    <div class="form-group">
+                        <label for="cmbCategoria">Categoría</label>
+                        <select class="form-control" id="cmbCategoria">
+                            <option value="0">Selecciona una categoría</option>
+                            <option value="1">Tecnología</option>
+                            <option value="2">Hogar</option>
+                            <option value="3">Alimentos</option>
+                            <option value="4">Hogar</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCantidad">Cantidad</label>
+                        <input class="form-control" id="txtCantidad" type="number" placeholder="Ingrese la cantidad de artículos en inventario">
+                    </div>
+                    <br />
+                    <button class="btn btn-primary" onclick="agregar()">Insertar</button>
+                </form>                
             </div>
         </div>        
     </div>
@@ -58,7 +60,11 @@
             const datos = await res.json();
             document.getElementById('listaInventario').innerHTML = datos.map(a => `<li class="list-group-item list-group-item-info">${a.nombre}: ${a.categoria} - $${a.precio}. Actualmente hay ${a.cantidad}</li>`).join('');
         }
-
+        async function limpiar() {
+            const formulario = document.getElementById('formInventario');
+            formulario.reset();
+            document.getElementById('txtNombre').focus();
+        }
         async function agregar() {
             const nombre = document.getElementById('txtNombre').value;
             const precio = document.getElementById('txtPrecio').value;
@@ -70,6 +76,7 @@
                 body: JSON.stringify({ nombre, precio, idCategoria, cantidad })
             });
             cargar();
+            limpiar();
         }
         cargar();
     </script>

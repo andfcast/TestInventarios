@@ -13,3 +13,5 @@ Usar Visual Studio 2026 para poder cargar la solución, luego dar click en ejecu
 # Video explicativo
 
 Una presentación de este proyecto en acción se encuentra en la siguiente dirección:
+
+[Presentación](https://youtu.be/g0cLAKvYI8Q)

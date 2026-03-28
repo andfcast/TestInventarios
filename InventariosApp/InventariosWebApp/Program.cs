@@ -16,15 +16,20 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger(); // Enable Swagger middleware
     app.UseSwaggerUI(); // Enable Swagger UI middleware
 
-    app.UseSwaggerUI(c => { 
+    app.UseSwaggerUI(c =>
+    {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "InventariosWebApp API V1");
     });
 }
 
 app.UseHttpsRedirection();
+app.UseDefaultFiles(); // Para que busque index.html por defecto
+app.UseStaticFiles();  // Para servir archivos desde wwwroot
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+
 
 app.Run();

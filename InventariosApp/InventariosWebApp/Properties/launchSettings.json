@@ -7,7 +7,7 @@
       },
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "swagger", // Set this to "swagger"
+      "launchUrl": "", 
       "applicationUrl": "http://localhost:57393"
     },
     "https": {
@@ -17,7 +17,7 @@
       },
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "swagger", // Set this to "swagger"
+      "launchUrl": "", 
       "applicationUrl": "https://localhost:44346;http://localhost:57393"
     },
     "IIS Express": {
